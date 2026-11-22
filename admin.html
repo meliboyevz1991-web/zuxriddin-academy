@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Zuxriddin Academy uchun yangi HTML testlarni yuklashga tayyorlash paneli.">
+  <title>Admin Panel | Zuxriddin Academy</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="admin.css">
+</head>
+<body>
+  <header class="top">
+    <div class="wrap">
+      <nav class="navbar" aria-label="Asosiy menyu">
+        <a class="brand" href="index.html">🎓 Zuxriddin Academy</a>
+        <div class="navlinks">
+          <a href="index.html">Bosh sahifa</a>
+          <a href="reading.html">Reading</a>
+          <a href="daily.html">Daily Tests</a>
+          <a href="https://github.com/meliboyevz1991-web/zuxriddin-academy" target="_blank" rel="noopener noreferrer">GitHub ↗</a>
+        </div>
+      </nav>
+      <section class="admin-hero">
+        <span class="admin-kicker">TEST BOSHQARUVI</span>
+        <h1>Admin Panel</h1>
+        <p>HTML testni tanlang, bo‘limini va darajasini belgilang. Panel uni saytingizga moslab yuklab beradi; nashr qilish GitHub orqali amalga oshadi.</p>
+      </section>
+    </div>
+  </header>
+
+  <main class="wrap page admin-main">
+    <div class="admin-counts" aria-label="Testlar statistikasi">
+      <div class="admin-stat"><span>📖 Reading</span><strong data-count="reading">—</strong></div>
+      <div class="admin-stat"><span>🎧 Listening</span><strong data-count="listening">—</strong></div>
+      <div class="admin-stat"><span>✍️ Grammar</span><strong data-count="grammar">—</strong></div>
+      <div class="admin-stat"><span>📚 Vocabulary</span><strong data-count="vocabulary">—</strong></div>
+    </div>
+
+    <div class="admin-columns">
+      <section class="admin-card" aria-labelledby="uploadTitle">
+        <div class="admin-card-heading">
+          <span class="admin-step-number">1</span>
+          <div>
+            <h2 id="uploadTitle">Yangi test tayyorlash</h2>
+            <p>Bu yerga maxfiy token yoki GitHub parolini kiritmang.</p>
+          </div>
+        </div>
+
+        <form id="uploadForm">
+          <label class="admin-label" for="testTitle">Test nomi</label>
+          <input class="admin-control" id="testTitle" name="testTitle" type="text" maxlength="130" placeholder="Masalan: A Day at the Zoo" required autocomplete="off">
+
+          <div class="admin-fields">
+            <div>
+              <label class="admin-label" for="subject">Bo‘lim</label>
+              <select class="admin-control" id="subject" name="subject">
+                <option value="reading">📖 Reading</option>
+                <option value="listening">🎧 Listening</option>
+                <option value="speaking">🎤 Speaking</option>
+                <option value="grammar">✍️ Grammar</option>
+                <option value="vocabulary">📚 Vocabulary</option>
+              </select>
+            </div>
+            <div>
+              <label class="admin-label" for="level">Daraja</label>
+              <select class="admin-control" id="level" name="level">
+                <option value="a1">A1 — Beginner</option>
+                <option value="a2" selected>A2 — Elementary</option>
+                <option value="b1">B1 — Intermediate</option>
+                <option value="b2">B2 — Upper Intermediate</option>
+                <option value="c1">C1 — Advanced</option>
+                <option value="c2">C2 — Proficient</option>
+              </select>
+            </div>
+          </div>
+
+          <label class="admin-label" for="htmlFile">Tayyor HTML test fayli</label>
+          <label class="admin-drop" for="htmlFile" id="dropZone">
+            <span class="admin-drop-icon" aria-hidden="true">↑</span>
+            <strong>HTML faylni tanlang</strong>
+            <span>Yoki shu yerga tortib tashlang • .html / .htm</span>
+          </label>
+          <input id="htmlFile" name="htmlFile" class="admin-file-input" type="file" accept=".html,.htm,text/html" required>
+          <p id="fileInfo" class="admin-file-note" aria-live="polite">Hali fayl tanlanmagan.</p>
+
+          <div class="admin-file-preview">
+            <span>Yaratiladigan fayl nomi:</span>
+            <code id="filenamePreview">reading-a2-... .html</code>
+          </div>
+
+          <p id="formMessage" class="admin-form-message" role="status" aria-live="polite"></p>
+          <button class="btn admin-primary" type="submit" id="prepareBtn">↓ HTML faylni tayyorlash</button>
+        </form>
+
+        <div id="readyBox" class="admin-ready" hidden>
+          <h3>✅ Fayl tayyor va yuklab olindi!</h3>
+          <p>Endi quyidagi tugmani bosing, yuklab olingan yangi HTML faylni GitHub'ga tanlang va <strong>Commit changes</strong> ni bosing.</p>
+          <a class="btn" href="https://github.com/meliboyevz1991-web/zuxriddin-academy/upload/main" target="_blank" rel="noopener noreferrer">GitHub'ga yuklash ↗</a>
+          <p class="admin-small">Muhim: GitHub'ga asl faylni emas, hozir yuklab olingan yangi nomli faylni yuklang.</p>
+        </div>
+      </section>
+
+      <aside class="admin-side">
+        <section class="admin-card" aria-labelledby="publishTitle">
+          <div class="admin-card-heading">
+            <span class="admin-step-number">2</span>
+            <div><h2 id="publishTitle">GitHub orqali nashr</h2><p>Xavfsiz tasdiqlash GitHub'ning o‘zida.</p></div>
+          </div>
+          <ol class="admin-instructions">
+            <li>Chapdagi formani to‘ldirib, HTML faylni yuklab oling.</li>
+            <li><strong>GitHub → Upload files</strong> sahifasiga kiring.</li>
+            <li>Yangi nom bilan yuklab olingan faylni tanlang.</li>
+            <li><strong>Commit changes</strong> tugmasini bosing.</li>
+            <li>Avtomatik nashr tugagach, test kerakli darajada ko‘rinadi.</li>
+          </ol>
+          <a class="admin-secondary-link" href="https://github.com/meliboyevz1991-web/zuxriddin-academy/upload/main" target="_blank" rel="noopener noreferrer">GitHub'da Upload files sahifasi ↗</a>
+          <a class="admin-secondary-link" href="https://github.com/meliboyevz1991-web/zuxriddin-academy/actions" target="_blank" rel="noopener noreferrer">Nashr holatini tekshirish ↗</a>
+        </section>
+
+        <section class="admin-card admin-security">
+          <h2>🔒 Xavfsizlik haqida</h2>
+          <p>Bu sahifa maxsus parol bilan himoyalangan emas. Uni hamma ochishi mumkin, ammo <strong>faqat repositoryga yozish huquqi bo‘lgan GitHub akkaunt</strong> testni nashr qila oladi.</p>
+          <p>Bu yerga GitHub paroli yoki access tokenini kiritmang.</p>
+        </section>
+      </aside>
+    </div>
+
+    <section class="admin-card admin-existing" aria-labelledby="existingTitle">
+      <div class="admin-card-heading">
+        <span class="admin-step-number">3</span>
+        <div><h2 id="existingTitle">Saytdagi testlar</h2><p>GitHub Pages’da nashr qilingan mavjud testlar ro‘yxati.</p></div>
+      </div>
+      <div id="test-list" class="test-list"><p class="muted-notice">Testlar yuklanmoqda...</p></div>
+    </section>
+  </main>
+
+  <footer><div class="wrap">© 2026 Zuxriddin Academy · <a href="index.html">Bosh sahifaga qaytish</a></div></footer>
+  <script src="admin.js"></script>
+  <script src="load-tests.js"></script>
+</body>
+</html>
