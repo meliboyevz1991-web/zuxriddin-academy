@@ -20,3 +20,17 @@
 .grammar-steps{display:flex;gap:9px;flex-wrap:wrap}.grammar-steps span{border-radius:99px;background:#e8f1ff;padding:6px 11px;color:#245ba6;font-weight:700;font-size:.83rem}
 @media(max-width:780px){.lesson-grid{grid-template-columns:1fr}.grammar-feature{flex-direction:column;align-items:flex-start}}
 @media(max-width:440px){.lesson-card{padding:19px}.lesson-heading h3{font-size:1.03rem}.lesson-steps{gap:5px}.lesson-steps span{padding:6px 10px;font-size:.73rem}}
+
+/* Grammar curriculum chooser */
+.grammar-levels-overview{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:13px;margin:22px 0 26px}
+.grammar-level-tile{display:flex;align-items:center;gap:11px;text-decoration:none;background:white;border:1px solid #d8e5f6;border-radius:15px;padding:15px 13px;min-width:0;transition:transform .16s,box-shadow .16s}
+.grammar-level-tile:hover{transform:translateY(-2px);box-shadow:0 9px 22px #1f548316}
+.grammar-level-tile.selected{background:#edf5ff;border-color:#4486dc;box-shadow:0 0 0 2px #4387e42b}
+.grammar-level-name{background:#e5efff;color:#1f58ad;display:grid;place-items:center;border-radius:11px;width:50px;min-width:50px;height:50px;font-size:1.08rem;font-weight:850}
+.grammar-level-tile div{display:grid;gap:3px;min-width:0;flex:1}
+.grammar-level-tile strong{font-size:.89rem;line-height:1.2}
+.grammar-level-tile small{font-size:.75rem;color:#668096;line-height:1.35}
+.grammar-level-tile [data-count-level]{font-size:.75rem;color:#2061b6;font-weight:750}
+.grammar-list-title{margin-top:30px}
+@media(max-width:1000px){.grammar-levels-overview{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:520px){.grammar-levels-overview{grid-template-columns:1fr}.grammar-level-tile{padding:13px}}

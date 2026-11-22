@@ -11,15 +11,25 @@
     el.textContent = n + ' ta test';
   }
 
+  for (const el of document.querySelectorAll('[data-count-level]')) {
+    const levelCount = el.dataset.countLevel;
+    const count = tests.filter(t => t.subject === 'grammar' && t.level === levelCount).length;
+    el.textContent = count + ' ta dars-test';
+  }
+
   if (!list) return;
   const requested = (new URLSearchParams(location.search).get('level') || '').toUpperCase();
   const level = ['A1','A2','B1','B2','C1','C2'].includes(requested) ? requested : '';
   const subjectTests = tests.filter(t => !subject || t.subject === subject);
   const shown = subjectTests.filter(t => !level || t.level === level);
   const order = ['A1','A2','B1','B2','C1','C2'];
-  shown.sort((a,b) => subject ? (order.indexOf(a.level)-order.indexOf(b.level) || b.url.localeCompare(a.url)) : b.url.split('/').pop().localeCompare(a.url.split('/').pop()));
+  shown.sort((a,b) => subject ? (order.indexOf(a.level)-order.indexOf(b.level) || (subject === 'grammar' ? a.url.localeCompare(b.url) : b.url.localeCompare(a.url))) : b.url.split('/').pop().localeCompare(a.url.split('/').pop()));
 
   const filters = document.getElementById('level-filters');
+  for (const tile of document.querySelectorAll('.grammar-level-tile')) {
+    const tileLevel = new URL(tile.href, location.href).searchParams.get('level');
+    if (level === tileLevel) tile.classList.add('selected');
+  }
   if (filters && subject) {
     const makeFilter = (value, name) => {
       const a = document.createElement('a');
@@ -59,7 +69,7 @@
     }
     const badge = document.createElement('span');
     badge.className = 'pill';
-    badge.textContent = test.url === 'grammar-a2-everyday-grammar.html' ? 'Dars + Test →' : 'Boshlash →';
+    badge.textContent = (test.url === 'grammar-a2-everyday-grammar.html' || /^grammar-(b1|b2|c1)-\d{2}-/.test(test.url)) ? 'Dars + Test →' : 'Boshlash →';
     item.append(left,badge);
     fragment.append(item);
   }
