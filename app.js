@@ -59,7 +59,7 @@
     }
     const badge = document.createElement('span');
     badge.className = 'pill';
-    badge.textContent = 'Boshlash →';
+    badge.textContent = test.url === 'grammar-a2-everyday-grammar.html' ? 'Dars + Test →' : 'Boshlash →';
     item.append(left,badge);
     fragment.append(item);
   }
