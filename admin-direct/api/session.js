@@ -1,0 +1,1 @@
+const {json,auth}=require('../lib/auth');module.exports=(req,res)=>req.method==='GET'?json(res,200,{authenticated:auth(req)}):json(res,405,{error:'GET only'});

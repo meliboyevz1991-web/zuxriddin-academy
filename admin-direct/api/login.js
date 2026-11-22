@@ -1,0 +1,2 @@
+const {equal,configured,origin,json,cookie}=require('../lib/auth');
+module.exports=(req,res)=>{if(req.method!=='POST')return json(res,405,{error:'POST only'});if(!origin(req))return json(res,403,{error:'Origin rejected'});if(!configured())return json(res,503,{error:'Admin sozlamalari tugallanmagan'});let p=typeof req.body?.password==='string'?req.body.password:'';if(p.length>512||!equal(p,process.env.ADMIN_PASSWORD))return json(res,401,{error:'Parol noto‘g‘ri'});cookie(res);return json(res,200,{ok:true})};

@@ -1,0 +1,1 @@
+const {json,origin}=require('../lib/auth');module.exports=(req,res)=>{if(req.method!=='POST')return json(res,405,{error:'POST only'});if(!origin(req))return json(res,403,{error:'Origin rejected'});res.setHeader('Set-Cookie','za_session=; Path=/; Max-Age=0; Secure; HttpOnly; SameSite=Strict');return json(res,200,{ok:true})};
