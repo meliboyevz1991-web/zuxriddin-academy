@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>A Busy Saturday – A2 Reading Test | Zuxriddin Academy</title>
+  <style>
+    :root { color-scheme: light; --navy:#102849; --blue:#2563eb; --bg:#f3f6fb; --text:#1f2937; --muted:#64748b; }
+    * { box-sizing: border-box; }
+    body { margin:0; background:var(--bg); font-family:Arial, sans-serif; color:var(--text); line-height:1.65; }
+    header { background:var(--navy); color:white; padding:18px 20px; }
+    .head-inner { max-width:850px; margin:auto; display:flex; flex-wrap:wrap; align-items:center; justify-content:space-between; gap:12px; }
+    a { color:inherit; }
+    .head-inner a { color:#dbeafe; text-decoration:none; }
+    main { max-width:850px; margin:30px auto; padding:0 16px 35px; }
+    h1 { line-height:1.25; margin:10px 0; }
+    h2 { font-size:1.25rem; margin-top:0; }
+    .label { color:#1d4ed8; text-transform:uppercase; font-weight:bold; font-size:.82rem; letter-spacing:.07em; }
+    .muted { color:var(--muted); }
+    .card { background:white; border-radius:16px; padding:24px; margin:20px 0; box-shadow:0 5px 22px #0f172a0e; }
+    .question { border:0; border-top:1px solid #e5e7eb; padding:20px 0 10px; margin:0; }
+    .question legend { font-weight:bold; padding:0 0 8px; }
+    .question label { display:block; padding:9px 12px; margin:6px 0; border:1px solid #e5e7eb; border-radius:9px; cursor:pointer; }
+    .question label:hover { background:#eff6ff; }
+    input { accent-color:var(--blue); margin-right:8px; }
+    button { background:var(--blue); color:white; font-size:1rem; border:0; border-radius:10px; padding:13px 20px; cursor:pointer; }
+    button:hover { background:#1d4ed8; }
+    button.secondary { background:#e2e8f0; color:#1e293b; }
+    .buttons { display:flex; flex-wrap:wrap; gap:10px; }
+    .result { padding:16px; border-radius:12px; margin-top:18px; background:#f0f9ff; border:1px solid #bfdbfe; }
+    .correct { color:#166534; } .incorrect { color:#b91c1c; }
+    .answer-note { padding:8px 0; border-bottom:1px solid #e2e8f0; }
+    [hidden] { display:none !important; }
+    @media(max-width:520px) { .card{padding:18px;} }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="head-inner">
+      <strong>🎓 Zuxriddin Academy</strong>
+      <a href="reading.html">← Back to Reading</a>
+    </div>
+  </header>
+  <main>
+    <p class="label">Reading · A2 · Test 02</p>
+    <h1>A Busy Saturday</h1>
+    <p class="muted">Read the story and choose the correct answer for each question. This is an original practice test created for Zuxriddin Academy.</p>
+    <section class="card">
+      <h2>The Story</h2>
+      <p>On Saturday morning, Maya wanted to visit the new bookshop in the town centre. She usually went shopping with her sister, but her sister was busy studying for an exam. So Maya decided to go alone.</p>
+      <p>Before leaving home, she checked the bus timetable on her phone. The next bus was in twenty minutes. She had enough time to make a sandwich and put a bottle of water in her bag.</p>
+      <p>When Maya arrived in town, she found that the bookshop did not open until eleven o'clock. It was only ten thirty. Instead of waiting outside, she went to a nearby café and read a magazine.</p>
+      <p>At eleven, Maya entered the bookshop. She looked at books about travel because she wanted to visit Italy one day. She bought a small guidebook and a notebook. On her way home, she called her sister and promised to show her the books that evening.</p>
+    </section>
+    <form id="quiz" class="card">
+      <h2>Questions</h2>
+      <p class="muted">5 questions · 1 point each</p>
+      <fieldset class="question">
+        <legend>1. Why did Maya go to town alone?</legend>
+        <label><input type="radio" name="q1" value="A"> A) Her sister had to study.</label>
+        <label><input type="radio" name="q1" value="B"> B) Her sister was at work.</label>
+        <label><input type="radio" name="q1" value="C"> C) Maya wanted to meet a friend.</label>
+      </fieldset>
+      <fieldset class="question">
+        <legend>2. What did Maya do before leaving home?</legend>
+        <label><input type="radio" name="q2" value="A"> A) She bought some water.</label>
+        <label><input type="radio" name="q2" value="B"> B) She prepared some food.</label>
+        <label><input type="radio" name="q2" value="C"> C) She called the bookshop.</label>
+      </fieldset>
+      <fieldset class="question">
+        <legend>3. What time did the bookshop open?</legend>
+        <label><input type="radio" name="q3" value="A"> A) 10:00</label>
+        <label><input type="radio" name="q3" value="B"> B) 10:30</label>
+        <label><input type="radio" name="q3" value="C"> C) 11:00</label>
+      </fieldset>
+      <fieldset class="question">
+        <legend>4. What did Maya do while she waited?</legend>
+        <label><input type="radio" name="q4" value="A"> A) She visited a museum.</label>
+        <label><input type="radio" name="q4" value="B"> B) She read in a café.</label>
+        <label><input type="radio" name="q4" value="C"> C) She walked around the park.</label>
+      </fieldset>
+      <fieldset class="question">
+        <legend>5. Why was Maya interested in travel books?</legend>
+        <label><input type="radio" name="q5" value="A"> A) She hoped to go to Italy.</label>
+        <label><input type="radio" name="q5" value="B"> B) She worked at a travel company.</label>
+        <label><input type="radio" name="q5" value="C"> C) She was planning a school project.</label>
+      </fieldset>
+      <div class="buttons">
+        <button type="submit">Submit Answers</button>
+        <button type="button" class="secondary" id="reset">Try Again</button>
+      </div>
+      <div id="result" class="result" hidden aria-live="polite"></div>
+    </form>
+    <p class="muted">© 2026 Zuxriddin Academy · Original educational practice content</p>
+  </main>
+  <script>
+    const answers = {q1:'A', q2:'B', q3:'C', q4:'B', q5:'A'};
+    const descriptions = {
+      q1:'Her sister was studying for an exam.',
+      q2:'She made a sandwich.',
+      q3:'The bookshop opened at eleven.',
+      q4:'She went to a café and read a magazine.',
+      q5:'She wanted to visit Italy one day.'
+    };
+    const quiz = document.getElementById('quiz');
+    const result = document.getElementById('result');
+    quiz.addEventListener('submit', function (event) {
+      event.preventDefault();
+      const data = new FormData(quiz);
+      const keys = Object.keys(answers);
+      const missing = keys.filter(key => !data.get(key));
+      if (missing.length) {
+        result.hidden = false;
+        result.textContent = `Please answer all questions. You have ${missing.length} unanswered question(s).`;
+        return;
+      }
+      const score = keys.filter(key => data.get(key) === answers[key]).length;
+      result.replaceChildren();
+      const heading = document.createElement('h2');
+      heading.textContent = `Your score: ${score}/5 (${Math.round(score/5*100)}%)`;
+      result.append(heading);
+      keys.forEach((key, index) => {
+        const row = document.createElement('div');
+        row.className = 'answer-note';
+        const correct = data.get(key) === answers[key];
+        row.classList.add(correct ? 'correct' : 'incorrect');
+        row.textContent = `${index+1}. ${correct ? '✓ Correct' : '✗ Incorrect'} — correct answer: ${answers[key]}. ${descriptions[key]}`;
+        result.append(row);
+      });
+      result.hidden = false;
+      result.scrollIntoView({behavior:'smooth', block:'nearest'});
+    });
+    document.getElementById('reset').addEventListener('click', function () {
+      quiz.reset();
+      result.hidden = true;
+      result.replaceChildren();
+    });
+  </script>
+</body>
+</html>
