@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>How Important Are Museums to You? | Zuxriddin Academy</title>
+  <style>
+    :root { color-scheme: light; --navy:#102a43; --blue:#2563eb; --muted:#56667a; --line:#e3eaf2; --bg:#f3f6fb; --green:#067647; --red:#b42318; }
+    * { box-sizing: border-box; }
+    body { margin:0; background:var(--bg); color:#17263b; font-family:Arial, Helvetica, sans-serif; line-height:1.65; }
+    a { color:#1d4ed8; }
+    .topbar { background:var(--navy); color:white; }
+    .top-inner { max-width:1120px; margin:auto; padding:18px 20px; display:flex; gap:16px; justify-content:space-between; align-items:center; flex-wrap:wrap; }
+    .brand { color:white; font-size:1.1rem; font-weight:700; text-decoration:none; }
+    .top-nav { display:flex; gap:18px; }
+    .top-nav a { color:#dce9fb; text-decoration:none; font-size:.9rem; }
+    main { max-width:1120px; padding:30px 20px 65px; margin:auto; }
+    .intro { margin-bottom:24px; }
+    .eyebrow { color:#1c55bc; font-weight:700; letter-spacing:.04em; font-size:.85rem; text-transform:uppercase; }
+    h1 { font-size:clamp(1.75rem, 4vw, 2.5rem); line-height:1.2; margin:10px 0 12px; color:#102a43; }
+    .intro p { color:var(--muted); margin:0; }
+    .stats { display:flex; flex-wrap:wrap; gap:12px; margin-top:18px; }
+    .pill { background:#e6eeff; color:#1a4691; padding:7px 12px; font-size:.9rem; border-radius:30px; font-weight:700; }
+    .layout { display:grid; grid-template-columns:1fr 1fr; align-items:start; gap:22px; }
+    .panel { background:white; border:1px solid var(--line); border-radius:16px; padding:24px; box-shadow:0 6px 22px #1124470b; min-width:0; }
+    .passage h2, .quiz-head h2 { margin:0 0 14px; color:#102a43; font-size:1.3rem; }
+    .passage .instruction { margin-top:0; font-style:italic; color:var(--muted); }
+    .person { margin-top:23px; border-top:1px solid var(--line); padding-top:18px; }
+    .person h3 { color:#17448b; margin:0 0 9px; }
+    .person p { margin:0; }
+    .quiz-head { display:flex; justify-content:space-between; align-items:start; gap:15px; flex-wrap:wrap; }
+    .timer { color:#19498e; background:#ebf2ff; padding:6px 11px; border-radius:9px; font-weight:700; font-variant-numeric:tabular-nums; }
+    .timer.danger { background:#fff0ee; color:var(--red); }
+    .progress-text { color:var(--muted); font-size:.9rem; margin:2px 0 15px; }
+    .progress-track { background:#e8eef7; border-radius:20px; height:7px; overflow:hidden; margin-bottom:12px; }
+    .progress-fill { width:0; height:100%; background:var(--blue); transition:width .2s; }
+    fieldset { margin:0; padding:18px 0; border:0; border-bottom:1px solid var(--line); }
+    fieldset:last-of-type { border-bottom:0; }
+    legend { font-size:1rem; font-weight:700; line-height:1.5; padding:0; margin:0 0 10px; width:100%; }
+    .option { display:flex; align-items:center; gap:10px; cursor:pointer; border:1px solid #e0e8f3; border-radius:9px; padding:9px 12px; margin:8px 0; }
+    .option:has(input:checked) { border-color:var(--blue); background:#eff5ff; }
+    .option input { accent-color:var(--blue); width:17px; height:17px; }
+    .answer-note { font-size:.87rem; margin:8px 0 0; padding:10px; border-radius:8px; }
+    .answer-note.good { background:#e8f7ee; color:var(--green); }
+    .answer-note.bad { background:#fff0ee; color:var(--red); }
+    .actions { display:flex; gap:10px; flex-wrap:wrap; margin-top:22px; }
+    button { padding:12px 18px; border-radius:10px; font-size:1rem; font-weight:700; cursor:pointer; border:0; }
+    .primary { background:var(--blue); color:#fff; }
+    .primary:hover { background:#194fcb; }
+    .secondary { color:#18418b; background:#e9effa; }
+    .scorebox { margin-top:18px; border:1px solid #b7d1fc; background:#eef5ff; padding:17px; border-radius:12px; }
+    .scorebox h3 { margin:0 0 7px; color:#153e86; }
+    .scorebox p { margin:0; }
+    .source { margin-top:24px; color:var(--muted); font-size:.88rem; }
+    .source p { margin:6px 0; }
+    footer { text-align:center; padding:20px; color:#607083; font-size:.84rem; }
+    [hidden] { display:none !important; }
+    @media (max-width:800px) { .layout { grid-template-columns:1fr; } main { padding:23px 14px 40px; } .panel { padding:18px; } }
+  </style>
+</head>
+<body>
+  <header class="topbar">
+    <div class="top-inner">
+      <a class="brand" href="index.html">🎓 Zuxriddin Academy</a>
+      <nav class="top-nav" aria-label="Main navigation">
+        <a href="index.html">Home</a>
+        <a href="reading.html">Reading Tests</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="intro">
+      <div class="eyebrow">Reading / A2 / Test 01</div>
+      <h1>How important are museums to you?</h1>
+      <p>Read what Chris, Emily and Daniel say, then choose the correct answer (A, B or C) for each question.</p>
+      <div class="stats">
+        <span class="pill">📖 A2 Reading</span>
+        <span class="pill">📝 7 questions</span>
+        <span class="pill">⏱️ 15 minutes</span>
+      </div>
+    </section>
+
+    <div class="layout">
+      <article class="panel passage" aria-labelledby="reading-title">
+        <h2 id="reading-title">Reading passage</h2>
+        <p class="instruction">We asked three young people this question and this is what they told us.</p>
+
+        <section class="person">
+          <h3>Chris</h3>
+          <p>A lot of my friends think museums are boring but I love them. I prefer ones where they move things round regularly, and bring in new things to keep it interesting. I also like to have things to listen to as well as look at. I suppose I like museums because I’m really interested in history and art. We study these subjects at college, but I’ve actually found out a lot more about them from museums than from my textbooks.</p>
+        </section>
+
+        <section class="person">
+          <h3>Emily</h3>
+          <p>I’m lucky because I live in New York, so there are lots of great museums for me to visit. One thing I’ve learnt is that you should never try to see a whole museum the first time you go. Just go to one or two rooms, and then return as often as you can to see the rest. For me, it’s important that the people who work in the museum are pleasant, and happy to talk to me about the things in the exhibition. That makes a big difference.</p>
+        </section>
+
+        <section class="person">
+          <h3>Daniel</h3>
+          <p>I don’t go to museums much, except during my holidays in new cities. Then I make sure I spend at least a day going to the most famous ones. If it’s a big museum and I don’t have much time, I sometimes walk into a room and choose just five things to look at. I also take a tour if there is one, as I learn so much more from listening to the person showing us round than I do if I’m by myself.</p>
+        </section>
+      </article>
+
+      <section class="panel" aria-labelledby="quiz-title">
+        <div class="quiz-head">
+          <h2 id="quiz-title">Questions</h2>
+          <span class="timer" id="timer" aria-label="Time remaining">15:00</span>
+        </div>
+        <p class="progress-text" id="progress-label">0 of 7 answered</p>
+        <div class="progress-track" aria-hidden="true"><div class="progress-fill" id="progress-fill"></div></div>
+        <form id="quiz-form">
+          <div id="questions"></div>
+          <div class="actions">
+            <button class="primary" type="submit" id="submit-button">Submit Answers</button>
+            <button class="secondary" type="button" id="reset-button">Try Again</button>
+          </div>
+        </form>
+        <div id="scorebox" class="scorebox" role="status" aria-live="polite" hidden>
+          <h3 id="score-title"></h3>
+          <p id="score-description"></p>
+        </div>
+      </section>
+    </div>
+
+    <div class="source">
+      <p><strong>Source:</strong> <a href="https://englishpracticetest.net/how-important-are-museums-to-you-a2-english-reading-test/" target="_blank" rel="noopener noreferrer">English Practice Test — How important are museums to you? (A2 English Reading Test)</a>.</p>
+      <p>Independent practice page for Zuxriddin Academy. Not an official Cambridge examination.</p>
+    </div>
+  </main>
+  <footer>© 2026 Zuxriddin Academy</footer>
+
+  <script>
+    const questions = [
+      { text: "Who always visits museums when they travel?", answer: "C", explanation: "Daniel visits famous museums when he is on holiday in new cities." },
+      { text: "Who says it is important to visit the same museum several times?", answer: "B", explanation: "Emily recommends returning to see the rest of a museum." },
+      { text: "Who likes museums where the exhibitions often change?", answer: "A", explanation: "Chris likes museums that regularly move things around and bring in new exhibits." },
+      { text: "Who says that museums should have friendly staff?", answer: "B", explanation: "Emily values pleasant staff who are happy to talk about the exhibition." },
+      { text: "Who says that they sometimes only look at a few things in a room?", answer: "C", explanation: "Daniel sometimes chooses just five things to look at." },
+      { text: "Who learns more in a museum than in a classroom?", answer: "A", explanation: "Chris says he has learnt more from museums than from his textbooks." },
+      { text: "Who prefers going around a museum with a guide to going alone?", answer: "C", explanation: "Daniel learns more from a tour guide than when visiting by himself." }
+    ];
+    const choices = [{ value:"A", label:"Chris" }, { value:"B", label:"Emily" }, { value:"C", label:"Daniel" }];
+    const form = document.getElementById("quiz-form");
+    const list = document.getElementById("questions");
+    const timerLabel = document.getElementById("timer");
+    const progressLabel = document.getElementById("progress-label");
+    const progressFill = document.getElementById("progress-fill");
+    const scorebox = document.getElementById("scorebox");
+    const submitButton = document.getElementById("submit-button");
+    let timeLeft = 15 * 60;
+    let finished = false;
+    let intervalId;
+
+    function renderQuestions() {
+      list.replaceChildren();
+      questions.forEach((question, index) => {
+        const fieldset = document.createElement("fieldset");
+        const legend = document.createElement("legend");
+        legend.textContent = `${index + 1}. ${question.text}`;
+        fieldset.append(legend);
+        choices.forEach(choice => {
+          const label = document.createElement("label");
+          label.className = "option";
+          const input = document.createElement("input");
+          input.type = "radio";
+          input.name = `q${index + 1}`;
+          input.value = choice.value;
+          const text = document.createElement("span");
+          text.textContent = `${choice.value}) ${choice.label}`;
+          label.append(input, text);
+          fieldset.append(label);
+        });
+        const note = document.createElement("p");
+        note.className = "answer-note";
+        note.hidden = true;
+        fieldset.append(note);
+        list.append(fieldset);
+      });
+      updateProgress();
+    }
+
+    function answeredCount() {
+      return questions.filter((_, index) => form.querySelector(`input[name="q${index + 1}"]:checked`)).length;
+    }
+    function updateProgress() {
+      const count = answeredCount();
+      progressLabel.textContent = `${count} of ${questions.length} answered`;
+      progressFill.style.width = `${count / questions.length * 100}%`;
+    }
+    function updateTimer() {
+      const minutes = String(Math.floor(timeLeft / 60)).padStart(2, "0");
+      const seconds = String(timeLeft % 60).padStart(2, "0");
+      timerLabel.textContent = `${minutes}:${seconds}`;
+      timerLabel.classList.toggle("danger", timeLeft <= 60);
+    }
+    function stopTimer() {
+      window.clearInterval(intervalId);
+    }
+    function startTimer() {
+      stopTimer();
+      updateTimer();
+      intervalId = window.setInterval(() => {
+        if (finished) return;
+        timeLeft -= 1;
+        updateTimer();
+        if (timeLeft <= 0) {
+          grade(true);
+        }
+      }, 1000);
+    }
+    function grade(timedOut = false) {
+      if (finished) return;
+      finished = true;
+      stopTimer();
+      let correct = 0;
+      questions.forEach((question, index) => {
+        const fieldset = list.children[index];
+        const selected = form.querySelector(`input[name="q${index + 1}"]:checked`);
+        const isCorrect = selected?.value === question.answer;
+        if (isCorrect) correct += 1;
+        const note = fieldset.querySelector(".answer-note");
+        const who = choices.find(choice => choice.value === question.answer).label;
+        note.textContent = `${isCorrect ? "✓ Correct!" : "✗ Incorrect or unanswered."} Correct answer: ${question.answer}) ${who}. ${question.explanation}`;
+        note.classList.add(isCorrect ? "good" : "bad");
+        note.hidden = false;
+      });
+      form.querySelectorAll("input").forEach(input => { input.disabled = true; });
+      submitButton.disabled = true;
+      submitButton.textContent = "Submitted";
+      scorebox.hidden = false;
+      document.getElementById("score-title").textContent = `Your score: ${correct} / ${questions.length} (${Math.round(correct / questions.length * 100)}%)`;
+      document.getElementById("score-description").textContent = timedOut ? "Time is up! Review the correct answers below each question." : "Well done! Review the explanations below each question.";
+      scorebox.scrollIntoView({ behavior:"smooth", block:"nearest" });
+    }
+    form.addEventListener("change", () => { if (!finished) updateProgress(); });
+    form.addEventListener("submit", event => {
+      event.preventDefault();
+      if (finished) return;
+      const remaining = questions.length - answeredCount();
+      if (remaining && !window.confirm(`${remaining} question(s) unanswered. Submit anyway?`)) return;
+      grade();
+    });
+    document.getElementById("reset-button").addEventListener("click", () => {
+      finished = false;
+      timeLeft = 15 * 60;
+      scorebox.hidden = true;
+      submitButton.disabled = false;
+      submitButton.textContent = "Submit Answers";
+      renderQuestions();
+      startTimer();
+      window.scrollTo({ top:0, behavior:"smooth" });
+    });
+    renderQuestions();
+    startTimer();
+  </script>
+</body>
+</html>
