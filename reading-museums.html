@@ -130,6 +130,7 @@
   </main>
   <footer>© 2026 Zuxriddin Academy</footer>
 
+  <script src="progress.js"></script>
   <script>
     const questions = [
       { text: "Who always visits museums when they travel?", answer: "C", explanation: "Daniel visits famous museums when he is on holiday in new cities." },
@@ -231,6 +232,7 @@
       scorebox.hidden = false;
       document.getElementById("score-title").textContent = `Your score: ${correct} / ${questions.length} (${Math.round(correct / questions.length * 100)}%)`;
       document.getElementById("score-description").textContent = timedOut ? "Time is up! Review the correct answers below each question." : "Well done! Review the explanations below each question.";
+      if (window.ZUX_PROGRESS) window.ZUX_PROGRESS.save({ id:"reading-museums.html", subject:"reading", level:"A2", title:"How Important Are Museums to You?", score:correct, total:questions.length });
       scorebox.scrollIntoView({ behavior:"smooth", block:"nearest" });
     }
     form.addEventListener("change", () => { if (!finished) updateProgress(); });

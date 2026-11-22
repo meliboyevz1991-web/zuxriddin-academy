@@ -93,6 +93,7 @@
     </form>
     <p class="muted">© 2026 Zuxriddin Academy · Original educational practice content</p>
   </main>
+  <script src="progress.js"></script>
   <script>
     const answers = {q1:'A', q2:'B', q3:'C', q4:'B', q5:'A'};
     const descriptions = {
@@ -115,6 +116,7 @@
         return;
       }
       const score = keys.filter(key => data.get(key) === answers[key]).length;
+      if (window.ZUX_PROGRESS) window.ZUX_PROGRESS.save({ id:"reading-a2-test02.html", subject:"reading", level:"A2", title:"A Busy Saturday", score, total:keys.length });
       result.replaceChildren();
       const heading = document.createElement('h2');
       heading.textContent = `Your score: ${score}/5 (${Math.round(score/5*100)}%)`;

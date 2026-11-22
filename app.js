@@ -50,6 +50,13 @@
     const detail = document.createElement('small');
     detail.textContent = test.subject.charAt(0).toUpperCase() + test.subject.slice(1) + ' • ' + test.level + ' level';
     left.append(title,detail);
+    const completed = window.ZUX_PROGRESS && window.ZUX_PROGRESS.get().find(r => r.id === test.url);
+    if (completed) {
+      const previous = document.createElement('small');
+      previous.className = 'completed-score';
+      previous.textContent = '✓ Oxirgi natija: ' + completed.score + '/' + completed.total;
+      left.append(previous);
+    }
     const badge = document.createElement('span');
     badge.className = 'pill';
     badge.textContent = 'Boshlash →';
