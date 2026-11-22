@@ -69,7 +69,7 @@
     }
     const badge = document.createElement('span');
     badge.className = 'pill';
-    badge.textContent = (test.url === 'grammar-a2-everyday-grammar.html' || /^grammar-(b1|b2|c1)-\d{2}-/.test(test.url)) ? 'Dars + Test →' : 'Boshlash →';
+    badge.textContent = (test.url === 'grammar-a2-everyday-grammar.html' || /^grammar-(b1|b2|c1)-\d{2}-/.test(test.url)) ? 'Dars + Test →' : /^reading-(b1-pet|b2-fce|c1-cae)-25/.test(test.url) ? '25 savol →' : 'Boshlash →';
     item.append(left,badge);
     fragment.append(item);
   }
