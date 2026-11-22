@@ -1,0 +1,1059 @@
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Advanced Reading Comprehension — 3 Parts (20 Questions)</title>
+    <style>
+        :root {
+            --primary: #4f46e5;
+            --primary-dark: #3730a3;
+            --primary-light: #eef2ff;
+            --p1-color: #0d9488;
+            --p2-color: #7c3aed;
+            --p3-color: #e11d48;
+            --active-color: #0d9488;
+            --success: #10b981;
+            --success-bg: #d1fae5;
+            --danger: #ef4444;
+            --danger-bg: #fee2e2;
+            --bg-body: #f1f5f9;
+            --bg-card: #ffffff;
+            --text-main: #0f172a;
+            --text-muted: #64748b;
+            --border: #e2e8f0;
+        }
+
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+
+        html, body {
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+            background-color: var(--bg-body);
+            color: var(--text-main);
+        }
+
+        /* Kirish Ekrani */
+        .login-overlay {
+            position: fixed;
+            inset: 0;
+            background: linear-gradient(135deg, #0f172a 0%, #312e81 100%);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 9999;
+        }
+
+        .login-card {
+            background: #ffffff;
+            padding: 40px 35px;
+            border-radius: 20px;
+            width: 90%;
+            max-width: 500px;
+            text-align: center;
+            box-shadow: 0 25px 50px -12px rgba(0,0,0,0.5);
+        }
+
+        .badge-adv {
+            display: inline-block;
+            background: linear-gradient(90deg, #0d9488, #7c3aed, #e11d48);
+            color: #ffffff;
+            font-weight: 800;
+            font-size: 0.82rem;
+            padding: 6px 16px;
+            border-radius: 999px;
+            margin-bottom: 14px;
+            letter-spacing: 0.5px;
+        }
+
+        .login-card h1 { font-size: 1.65rem; margin-bottom: 10px; color: var(--text-main); }
+        .login-card p { color: var(--text-muted); font-size: 0.94rem; margin-bottom: 24px; line-height: 1.55; }
+
+        .login-input {
+            width: 100%;
+            padding: 14px 16px;
+            border: 2px solid var(--border);
+            border-radius: 10px;
+            font-size: 1rem;
+            margin-bottom: 20px;
+            outline: none;
+        }
+
+        .login-input:focus { border-color: var(--primary); }
+
+        .btn-start {
+            width: 100%;
+            background: var(--primary);
+            color: #ffffff;
+            border: none;
+            padding: 14px;
+            font-size: 1.05rem;
+            font-weight: 700;
+            border-radius: 10px;
+            cursor: pointer;
+        }
+
+        /* Asosiy Ilova */
+        .app-container {
+            display: flex;
+            flex-direction: column;
+            width: 100vw;
+            height: 100vh;
+        }
+
+        .top-header {
+            height: 68px;
+            background: var(--bg-card);
+            border-bottom: 2px solid var(--border);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 26px;
+            flex-shrink: 0;
+            gap: 12px;
+        }
+
+        .brand-box { display: flex; align-items: center; gap: 12px; }
+
+        .brand-logo {
+            background: var(--active-color);
+            color: #fff;
+            font-weight: 900;
+            padding: 8px 13px;
+            border-radius: 9px;
+            font-size: 0.95rem;
+        }
+
+        .brand-title h2 { font-size: 1.1rem; font-weight: 800; }
+        .brand-title span { font-size: 0.78rem; color: var(--text-muted); font-weight: 600; }
+
+        /* 3 Qism Tabs */
+        .part-tabs {
+            display: flex;
+            gap: 8px;
+            background: #f1f5f9;
+            padding: 5px;
+            border-radius: 12px;
+        }
+
+        .part-tab-btn {
+            border: none;
+            padding: 9px 16px;
+            border-radius: 8px;
+            font-weight: 800;
+            font-size: 0.85rem;
+            cursor: pointer;
+            background: transparent;
+            color: #475569;
+            transition: all 0.2s;
+        }
+
+        .part-tab-btn.p0.active { background: var(--p1-color); color: #fff; }
+        .part-tab-btn.p1.active { background: var(--p2-color); color: #fff; }
+        .part-tab-btn.p2.active { background: var(--p3-color); color: #fff; }
+
+        .header-right { display: flex; align-items: center; gap: 12px; }
+
+        .timer-badge {
+            background: #fef3c7;
+            color: #b45309;
+            border: 1px solid #fde68a;
+            font-weight: 800;
+            padding: 6px 12px;
+            border-radius: 8px;
+            font-family: monospace;
+            font-size: 1rem;
+        }
+
+        .student-pill {
+            background: var(--primary-light);
+            color: var(--primary);
+            font-weight: 700;
+            padding: 6px 14px;
+            border-radius: 8px;
+            font-size: 0.88rem;
+        }
+
+        .tg-link {
+            text-decoration: none;
+            color: #0088cc;
+            border: 2px solid #0088cc;
+            padding: 6px 14px;
+            border-radius: 999px;
+            font-weight: 700;
+            font-size: 0.9rem;
+            transition: all 0.2s;
+        }
+
+        .tg-link:hover { background: #0088cc; color: #ffffff; }
+
+        /* O'rta Ishchi Maydon (Split Screen) */
+        .workspace {
+            display: flex;
+            flex: 1;
+            gap: 18px;
+            padding: 16px 24px;
+            overflow: hidden;
+        }
+
+        /* Chap oyna: Matn */
+        .passage-pane {
+            flex: 1.08;
+            background: var(--bg-card);
+            border: 2px solid var(--border);
+            border-radius: 16px;
+            padding: 24px 28px;
+            overflow-y: auto;
+            line-height: 1.85;
+            font-size: 1.04rem;
+        }
+
+        .passage-meta-bar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: #f8fafc;
+            padding: 10px 14px;
+            border-radius: 10px;
+            border: 1px solid var(--border);
+            margin-bottom: 16px;
+            font-size: 0.85rem;
+            font-weight: 800;
+            color: var(--active-color);
+        }
+
+        .passage-title {
+            font-size: 1.4rem;
+            font-weight: 800;
+            color: var(--text-main);
+            margin-bottom: 16px;
+        }
+
+        .passage-text p {
+            margin-bottom: 16px;
+            text-align: justify;
+            color: #1e293b;
+        }
+
+        .inline-gap-badge {
+            display: inline-block;
+            background: #ccfbf1;
+            border: 2px dashed #0d9488;
+            color: #0f766e;
+            font-weight: 800;
+            padding: 1px 10px;
+            border-radius: 6px;
+            font-size: 0.92rem;
+            margin: 0 3px;
+        }
+
+        .inline-gap-badge.filled {
+            background: #0d9488;
+            border-style: solid;
+            color: #ffffff;
+        }
+
+        .hl-mark {
+            background-color: #fef08a;
+            padding: 1px 3px;
+            border-radius: 3px;
+        }
+
+        /* O'rta oyna: Savollar */
+        .questions-pane {
+            flex: 1.02;
+            background: var(--bg-card);
+            border: 2px solid var(--border);
+            border-radius: 16px;
+            padding: 22px 24px;
+            overflow-y: auto;
+        }
+
+        .instruction-box {
+            background: #f8fafc;
+            border: 1px solid var(--border);
+            border-left: 4px solid var(--active-color);
+            padding: 12px 16px;
+            border-radius: 10px;
+            margin-bottom: 14px;
+            font-size: 0.9rem;
+            line-height: 1.5;
+        }
+
+        .sentences-bank-box {
+            background: #fffbeb;
+            border: 2px solid #fde68a;
+            border-radius: 12px;
+            padding: 14px 18px;
+            margin-bottom: 18px;
+            font-size: 0.91rem;
+            line-height: 1.65;
+            color: #78350f;
+        }
+
+        .q-card {
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 15px 18px;
+            margin-bottom: 14px;
+            background: #ffffff;
+        }
+
+        .q-prompt {
+            font-weight: 800;
+            font-size: 0.98rem;
+            margin-bottom: 12px;
+            line-height: 1.45;
+            color: var(--text-main);
+        }
+
+        .pills-row {
+            display: flex;
+            gap: 8px;
+            flex-wrap: wrap;
+        }
+
+        .choice-pill {
+            padding: 9px 16px;
+            border-radius: 8px;
+            border: 2px solid var(--border);
+            background: #f8fafc;
+            font-weight: 800;
+            font-size: 0.92rem;
+            cursor: pointer;
+            transition: all 0.15s;
+        }
+
+        .choice-pill:hover {
+            border-color: var(--active-color);
+            background: var(--primary-light);
+        }
+
+        .choice-pill.selected {
+            border-color: var(--active-color);
+            background: var(--active-color);
+            color: #ffffff;
+        }
+
+        .choice-pill.correct-pill {
+            border-color: var(--success) !important;
+            background: var(--success) !important;
+            color: #ffffff !important;
+        }
+
+        .choice-pill.wrong-pill {
+            border-color: var(--danger) !important;
+            background: var(--danger) !important;
+            color: #ffffff !important;
+        }
+
+        .exp-box {
+            display: none;
+            margin-top: 10px;
+            padding: 10px 14px;
+            border-radius: 8px;
+            font-size: 0.86rem;
+            line-height: 1.5;
+            background: #f0fdf4;
+            border: 1px solid #bbf7d0;
+            color: #166534;
+        }
+
+        .exp-box.wrong-exp {
+            background: #fef2f2;
+            border-color: #fecaca;
+            color: #991b1b;
+        }
+
+        /* O'ng Panel: 20 talik Savollar Navigatsiyasi */
+        .side-nav-panel {
+            width: 265px;
+            background: var(--bg-card);
+            border: 2px solid var(--border);
+            border-radius: 16px;
+            padding: 16px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            flex-shrink: 0;
+            overflow-y: auto;
+        }
+
+        .side-part-label {
+            font-size: 0.76rem;
+            font-weight: 800;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            margin: 10px 0 6px 0;
+        }
+
+        .nav-grid-7 {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 6px;
+            margin-bottom: 6px;
+        }
+
+        .nav-q-btn {
+            padding: 8px 0;
+            border-radius: 6px;
+            border: 1px solid #cbd5e1;
+            background: #ffffff;
+            font-weight: 800;
+            font-size: 0.84rem;
+            cursor: pointer;
+            transition: all 0.15s;
+        }
+
+        .nav-q-btn:hover { border-color: var(--active-color); color: var(--active-color); }
+        .nav-q-btn.answered { background: var(--active-color); color: #ffffff; border-color: var(--active-color); }
+        .nav-q-btn.correct-btn { background: var(--success); color: #ffffff; border-color: var(--success); }
+        .nav-q-btn.wrong-btn { background: var(--danger); color: #ffffff; border-color: var(--danger); }
+
+        .score-box {
+            display: none;
+            background: #f8fafc;
+            border: 2px solid var(--active-color);
+            color: var(--text-main);
+            padding: 10px;
+            border-radius: 10px;
+            text-align: center;
+            font-weight: 800;
+            font-size: 0.85rem;
+            margin-bottom: 10px;
+            line-height: 1.5;
+        }
+
+        .btn-finish {
+            width: 100%;
+            background: #ef4444;
+            color: #ffffff;
+            border: none;
+            padding: 12px;
+            border-radius: 10px;
+            font-weight: 800;
+            font-size: 0.92rem;
+            cursor: pointer;
+            margin-bottom: 6px;
+        }
+
+        .btn-reset {
+            width: 100%;
+            background: #64748b;
+            color: #ffffff;
+            border: none;
+            padding: 9px;
+            border-radius: 8px;
+            font-weight: 700;
+            font-size: 0.84rem;
+            cursor: pointer;
+        }
+
+        /* Pastki Footer */
+        .bottom-footer {
+            height: 52px;
+            background: var(--bg-card);
+            border-top: 2px solid var(--border);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 24px;
+            flex-shrink: 0;
+        }
+
+        .creator-center { font-weight: 800; color: #334155; font-size: 0.94rem; }
+
+        .nav-step-btn {
+            background: var(--active-color);
+            color: white;
+            border: none;
+            padding: 8px 18px;
+            border-radius: 8px;
+            font-weight: 700;
+            cursor: pointer;
+            font-size: 0.88rem;
+        }
+
+        .nav-step-btn:disabled { background: #cbd5e1; cursor: not-allowed; }
+
+        @media (max-width: 1080px) {
+            html, body { overflow: auto; }
+            .app-container { height: auto; min-height: 100vh; }
+            .top-header { height: auto; padding: 12px; flex-wrap: wrap; }
+            .workspace { flex-direction: column; }
+            .side-nav-panel { width: 100%; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Kirish Oynasi -->
+    <div class="login-overlay" id="login-overlay">
+        <div class="login-card">
+            <span class="badge-adv">ADVANCED READING COMPREHENSION • 3 PARTS</span>
+            <h1>Advanced Reading (20 Questions)</h1>
+            <p>
+                • <strong>Part 1 (1–6):</strong> Indian Doctor Jailed — Sentence Gap Fill (A–G)<br>
+                • <strong>Part 2 (7–13):</strong> Temptation Island — True / False<br>
+                • <strong>Part 3 (14–20):</strong> University Offers PC Games Course — True / False<br><br>
+                Boshlash uchun Familiya va Ismingizni kiriting:
+            </p>
+            <input type="text" id="student-name-input" class="login-input" placeholder="Familiya va Ismingizni kiriting..." autocomplete="off">
+            <button type="button" class="btn-start" onclick="enterPlatform()">Testni Boshlash</button>
+        </div>
+    </div>
+
+    <!-- Asosiy Ilova -->
+    <div class="app-container">
+        <header class="top-header">
+            <div class="brand-box">
+                <div class="brand-logo" id="brand-logo">PART 1</div>
+                <div class="brand-title">
+                    <h2>ADVANCED READING COMPREHENSION (3 PARTS)</h2>
+                    <span>Sentence Gap Fill (1–6) • True / False (7–20) • Split-Screen View</span>
+                </div>
+            </div>
+
+            <div class="part-tabs">
+                <button type="button" class="part-tab-btn p0 active" id="tab-p0" onclick="loadPart(0)">1-qism: Indian Doctor (1–6)</button>
+                <button type="button" class="part-tab-btn p1" id="tab-p1" onclick="loadPart(1)">2-qism: Temptation Island (7–13)</button>
+                <button type="button" class="part-tab-btn p2" id="tab-p2" onclick="loadPart(2)">3-qism: PC Games Course (14–20)</button>
+            </div>
+
+            <div class="header-right">
+                <div class="timer-badge" id="timer-display">35:00</div>
+                <div class="student-pill" id="student-name-display">O'quvchi</div>
+                <a href="https://t.me/meliboyevzblog" target="_blank" class="tg-link">@meliboyevzblog</a>
+            </div>
+        </header>
+
+        <!-- Ikki Oynali Ishchi Maydon -->
+        <div class="workspace">
+            <!-- CHAP OYNA: MATN -->
+            <div class="passage-pane">
+                <div class="passage-meta-bar">
+                    <span id="passage-part-indicator">Part 1 • Advanced — Sentence Gap Fill (Questions 1–6)</span>
+                    <button type="button" class="nav-step-btn" style="padding: 4px 12px; font-size: 0.78rem;" onclick="highlightSelection()">🖍 Highlight</button>
+                </div>
+                <h3 class="passage-title" id="passage-title">Title</h3>
+                <div class="passage-text" id="passage-body"></div>
+            </div>
+
+            <!-- O'RTA OYNA: SAVOLLAR -->
+            <div class="questions-pane" id="questions-pane"></div>
+
+            <!-- O'NG PANEL: 1 DAN 20 GACHA SAVOLLAR NAVIGATSIYASI -->
+            <div class="side-nav-panel">
+                <div>
+                    <h4 style="text-align: center; margin-bottom: 4px;">Savollar Paneli</h4>
+                    <p id="answered-counter" style="text-align: center; font-size: 0.8rem; color: var(--text-muted); margin-bottom: 8px;">Belgilandi: 0 / 20</p>
+
+                    <div class="side-part-label" style="color: var(--p1-color);">1-qism: Gap Fill (1–6)</div>
+                    <div class="nav-grid-7" id="nav-grid-p0"></div>
+
+                    <div class="side-part-label" style="color: var(--p2-color);">2-qism: Temptation Island (7–13)</div>
+                    <div class="nav-grid-7" id="nav-grid-p1"></div>
+
+                    <div class="side-part-label" style="color: var(--p3-color);">3-qism: PC Games Course (14–20)</div>
+                    <div class="nav-grid-7" id="nav-grid-p2"></div>
+                </div>
+
+                <div>
+                    <div class="score-box" id="score-box"></div>
+                    <button type="button" class="btn-finish" onclick="finishAndCheckAll()">Testni Yakunlash (20 ta)</button>
+                    <button type="button" class="btn-reset" onclick="resetAllTest()">Qaytadan Ishlash</button>
+                </div>
+            </div>
+        </div>
+
+        <footer class="bottom-footer">
+            <button type="button" class="nav-step-btn" id="prev-part-btn" onclick="changePart(-1)">&#8592; Oldingi qism</button>
+            <div class="creator-center">Tuzuvchi: Meliboyev Zuxriddin</div>
+            <button type="button" class="nav-step-btn" id="next-part-btn" onclick="changePart(1)">Keyingi qism &#8594;</button>
+        </footer>
+    </div>
+
+    <script>
+        const advancedReadingParts = [
+            // ================= 1-QISM: SENTENCE GAP FILL 4 (QUESTIONS 1–6) =================
+            {
+                badgeLabel: "PART 1",
+                color: "#0d9488",
+                headerLabel: "Part 1 • Advanced — Sentence Gap Fill (Questions 1–6)",
+                title: "Indian Doctor Jailed for Determining Gender of Unborn Child",
+                paragraphs: [
+                    "In India, medical professionals have been sentenced to prison for the first time for using ultrasound technology to determine the sex of an unborn baby. The practice has facilitated the abortion of millions of female fetuses in a country where boys have traditionally been preferred over girls.",
+                    "A doctor and his assistant in the northern state of Haryana have been jailed for two years, after local authorities sent decoy patients to the doctor's clinic to determine the gender of the women's fetuses.",
+                    "The prosecution said the doctor used ultrasound to determine the fetuses' sex. <span class='inline-gap-badge' id='inline-gap-1'>(1) ________</span>",
+                    "India banned ultrasound tests done to determine the sex of a fetus in 1994, after it was realized how parents across the country were using the technology. <span class='inline-gap-badge' id='inline-gap-2'>(2) ________</span>",
+                    "Indian experts say at least six-million female fetuses have been eliminated during the past 20 years due to sex-selective abortions. <span class='inline-gap-badge' id='inline-gap-3'>(3) ________</span>",
+                    "A consultant with the Center for Women's Development Studies, Sabu George, says authorities must do more to clamp down on doctors for whom such tests and abortions have become a multi-million dollar business.",
+                    "\"It is not difficult to stop the crime, everybody knows which doctors are doing it in any town or any village. <span class='inline-gap-badge' id='inline-gap-4'>(4) ________</span> \"But somehow the civil society organizations do not give it adequate priority in terms of stopping the crime, they are not seeing it as genocide.\"",
+                    "Social activists campaigning to stop the practice hope the recent conviction and jailing will act as a deterrent to thousands of doctors who conduct such tests, but have never faced prison due to a lax enforcement system.",
+                    "There has only been one previous prosecution under the law banning ultrasound for sex determination. <span class='inline-gap-badge' id='inline-gap-5'>(5) ________</span>",
+                    "The practice of aborting females has led to a highly skewed sex ratio in the country. The 2001 census found that the number of women for every 1,000 men had dipped to 933, from 972 a century ago. <span class='inline-gap-badge' id='inline-gap-6'>(6) ________</span>",
+                    "Social activists say the practice cuts across urban and rural areas as well as social classes.",
+                    "They say gender selection is part of a larger problem in a society where a girl child is discriminated against, and is considered a liability because parents must pay a dowry when she gets married.",
+                    "<em>This article reprinted from VOA.</em>"
+                ],
+                instruction: "Choose from the sentences (A–G) the one which fits each gap (1–6). Remember, there is ONE extra sentence you do not need to use.",
+                sentenceBank: [
+                    "<strong>A.</strong> A recent study by the British medical journal <em>The Lancet</em> put the number as high as 10 million.",
+                    "<strong>B.</strong> It led to a fine for improper maintenance of records.",
+                    "<strong>C.</strong> In some parts of the affluent north, including the Indian capital, the ratio of women to men is even lower.",
+                    "<strong>D.</strong> When one was found to be a female, he promised the mother he would \"take care\" of it.",
+                    "<strong>E.</strong> The U.N intervened at this point and the Indian government was informed that action must be taken.",
+                    "<strong>F.</strong> But the practice continues.",
+                    "<strong>G.</strong> So this is public knowledge where it is happening,\" George said."
+                ],
+                questions: [
+                    {
+                        globalNum: 1,
+                        type: "gap",
+                        choices: ["A", "B", "C", "D", "E", "F", "G"],
+                        q: "Gap (1) — After: \"The prosecution said the doctor used ultrasound to determine the fetuses' sex.\"",
+                        ans: "D",
+                        exp: "To'g'ri javob: D. Oldingi gapda shifokor homila jinsini aniqlagani aytilgan; D gapda esa ulardan biri qiz ekanligi aniqlanganda onaga uni 'hal qilib berishni' va'da qilgani mantiqan davom etadi."
+                    },
+                    {
+                        globalNum: 2,
+                        type: "gap",
+                        choices: ["A", "B", "C", "D", "E", "F", "G"],
+                        q: "Gap (2) — After: \"India banned ultrasound tests done to determine the sex of a fetus in 1994...\"",
+                        ans: "F",
+                        exp: "To'g'ri javob: F (But the practice continues). 1994-yilda qonun bilan taqiqlangan bo'lsa ham, bu amaliyot haligacha davom etmoqda."
+                    },
+                    {
+                        globalNum: 3,
+                        type: "gap",
+                        choices: ["A", "B", "C", "D", "E", "F", "G"],
+                        q: "Gap (3) — After: \"Indian experts say at least six-million female fetuses have been eliminated...\"",
+                        ans: "A",
+                        exp: "To'g'ri javob: A. Oldingi gapda kamida 6 million raqami keltirilgan; A gapda esa 'The Lancet' jurnali tadqiqoti bu raqamni 10 milliongacha yetkazgani aytiladi."
+                    },
+                    {
+                        globalNum: 4,
+                        type: "gap",
+                        choices: ["A", "B", "C", "D", "E", "F", "G"],
+                        q: "Gap (4) — Inside Sabu George's quote: \"...everybody knows which doctors are doing it in any town or any village.\"",
+                        ans: "G",
+                        exp: "To'g'ri javob: G ('So this is public knowledge where it is happening,\" George said). Qo'shtirnoq ichidagi iqtibosning mantiqiy davomi va yakuni."
+                    },
+                    {
+                        globalNum: 5,
+                        type: "gap",
+                        choices: ["A", "B", "C", "D", "E", "F", "G"],
+                        q: "Gap (5) — After: \"There has only been one previous prosecution under the law banning ultrasound...\"",
+                        ans: "B",
+                        exp: "To'g'ri javob: B (It led to a fine for improper maintenance of records). Avvalgi yagona sud ishi ('one previous prosecution' -> 'It') faqat hujjatlarni noto'g'ri yuritgani uchun jarima bilan tugagani aytilgan."
+                    },
+                    {
+                        globalNum: 6,
+                        type: "gap",
+                        choices: ["A", "B", "C", "D", "E", "F", "G"],
+                        q: "Gap (6) — After: \"...the number of women for every 1,000 men had dipped to 933, from 972 a century ago.\"",
+                        ans: "C",
+                        exp: "To'g'ri javob: C. Oldingi gapda ayollar va erkaklar nisbati (ratio) 933 ga tushgani, C gapda esa boy shimoliy hududlarda bu nisbat yanada pastligi ('even lower') keltirilgan."
+                    }
+                ]
+            },
+
+            // ================= 2-QISM: TEMPTATION ISLAND (QUESTIONS 7–13) =================
+            {
+                badgeLabel: "PART 2",
+                color: "#7c3aed",
+                headerLabel: "2-qism • Temptation Island (Advanced — True or False • Questions 7–13)",
+                title: "Temptation Island",
+                paragraphs: [
+                    "The couple banished from the hit \"reality\" series \"Temptation Island\" because they are parents of a young child have sued the production company and Fox-TV for defamation, claiming that producers knew about the toddler all along.",
+                    "Ytossie Patterson and Taheed Watson claim in their Los Angeles Superior Court lawsuit that producers edited an episode of the hit show to make it appear that they had concealed their status as parents and then chastised them on the air in an \"extremely condescending and humiliating manner.\"",
+                    "A spokeswoman for Rocket Science Laboratories, the show's producers, referred calls regarding the lawsuit, which was filed on Wednesday, to Fox, which said it would have a statement \"later in the day.\"",
+                    "Patterson, 34, and Watson, 29, were among four couples sent last season to an island off Belize in the Caribbean to film \"Temptation Island,\" which separates the partners and sets each person up on dates with attractive singles to see who will cheat.",
+                    "Patterson and Watson were booted off the show midway through the season after the network said it had discovered that they had a two-year-old child together, making their further participation inappropriate.",
+                    "The couple claims in their lawsuit, which seeks unspecified damages, that they revealed the existence of their child when asked during preliminary interviews with Rocket Science and were told that that was \"the wrong answer.\"",
+                    "Patterson and Watson claim that \"Temptation Island\" producers decided that it would boost the show's ratings if the child's existence were suddenly revealed during a broadcast.",
+                    "During that broadcast, the couple claims, hours of conversation between them and producers was edited and \"manipulated\" to create a false impression that they had kept their child secret.",
+                    "\"The footage was edited to exclude plaintiffs' responses to the producers questions and falsely portrayed plaintiffs as mischievous and immoral (and that) they had in fact concealed the existence of their own child and that they had nothing to say about it in the face of this disgraceful tongue-lashing,\" the lawsuit claims."
+                ],
+                instruction: "Read the text carefully and decide whether each statement (7–13) is True or False.",
+                sentenceBank: null,
+                questions: [
+                    {
+                        globalNum: 7,
+                        type: "tf",
+                        choices: ["True", "False"],
+                        q: "7 (1). The programme mentioned is successful.",
+                        ans: "True",
+                        exp: "True: 1- va 2-paragraflarda ko'rsatuv 'the hit reality series / the hit show' (juda muvaffaqiyatli/mashhur shou) deb ta'riflangan."
+                    },
+                    {
+                        globalNum: 8,
+                        type: "tf",
+                        choices: ["True", "False"],
+                        q: "8 (2). The couple say they had told Fox of the child.",
+                        ans: "False",
+                        exp: "False: 6-paragrafda juftlik farzandi borligini Fox telekanaliga emas, balki 'Rocket Science' prodyuserlik kompaniyasi bilan dastlabki suhbatda aytganini da'vo qilgan."
+                    },
+                    {
+                        globalNum: 9,
+                        type: "tf",
+                        choices: ["True", "False"],
+                        q: "9 (3). The couple felt embarrassed by their treatment on the show.",
+                        ans: "True",
+                        exp: "True: 2-paragrafda ularga efirda 'extremely condescending and humiliating manner' (kamsituvchi va sharmanda qiluvchi tarzda) munosabatda bo'lingani yozilgan."
+                    },
+                    {
+                        globalNum: 10,
+                        type: "tf",
+                        choices: ["True", "False"],
+                        q: "10 (4). The four couples go on dates with each other to see what happens.",
+                        ans: "False",
+                        exp: "False: 4-paragrafda juftliklar bir-birlari bilan emas, balki 'attractive singles' (jozibali bo'ydoq/yolg'iz ishtirokchilar) bilan uchrashuvga chiqishi aytilgan."
+                    },
+                    {
+                        globalNum: 11,
+                        type: "tf",
+                        choices: ["True", "False"],
+                        q: "11 (5). The couple are suing for financial loss.",
+                        ans: "False",
+                        exp: "False: 1- va 6-paragraflarga ko'ra, ular moliyaviy zarar (financial loss) uchun emas, balki 'defamation' (obro'sizlantirish/tuhmat) uchun ma'naviy zarar ('unspecified damages') undirish maqsadida sudga bergan."
+                    },
+                    {
+                        globalNum: 12,
+                        type: "tf",
+                        choices: ["True", "False"],
+                        q: "12 (6). The court case is in the Caribbean.",
+                        ans: "False",
+                        exp: "False: Karib dengizidagi orolda shou suratga olingan, sud ishi esa 2-paragrafga ko'ra 'Los Angeles Superior Court' (Los-Anjeles oliy sudi)da ko'rilmoqda."
+                    },
+                    {
+                        globalNum: 13,
+                        type: "tf",
+                        choices: ["True", "False"],
+                        q: "13 (7). The couple say that the producers changed the film to make them look dishonest.",
+                        ans: "True",
+                        exp: "True: 8- va 9-paragraflarda kadrlar montaj qilinib ('edited and manipulated'), ularni yolg'onchi va axloqsiz ('mischievous and immoral') qilib ko'rsatgani aytilgan."
+                    }
+                ]
+            },
+
+            // ================= 3-QISM: UNIVERSITY OFFERS PC GAMES COURSE (QUESTIONS 14–20) =================
+            {
+                badgeLabel: "PART 3",
+                color: "#e11d48",
+                headerLabel: "3-qism • University Offers PC Games Course (Advanced — True or False • Questions 14–20)",
+                title: "University Offers PC Games Course",
+                paragraphs: [
+                    "A Scottish University has announced a world first in the field of elite academic achievement. It is offering a masters degree course in computer games software engineering.",
+                    "The University of Abertay in Dundee says it could put the city at the centre of a multi-million pound industry.",
+                    "Over £45bn will be spent on computer software in Europe this year, with the games market making up a substantial share.",
+                    "There are only forty places on the course. The course leader, John Sutherland says he hopes that people will see that computer games are about people as well as machines.",
+                    "\"Students will have to learn about how people see, feel and hear to be successful in this environment\" he said.",
+                    "\"In the next five years the computer games industry will be worth more than the entire cinema industry is today.\"",
+                    "The University will be offering a Bachelors course in the same discipline in the very near future and are in the process of building a new computer laboratory.",
+                    "Computer games technology, particularly virtual applications, have other uses apart from entertainment.",
+                    "Medical simulations for training surgeons and more realistic flight simulators for pilot education are just two uses for the technology.",
+                    "<em>Credit: http://news.bbc.co.uk/2/hi/science/nature/28081.stm</em>"
+                ],
+                instruction: "Read this short text about a course being offered in a Scottish university. Answer the True or False questions (14–20).",
+                sentenceBank: null,
+                questions: [
+                    {
+                        globalNum: 14,
+                        type: "tf",
+                        choices: ["True", "False"],
+                        q: "14 (1). The university wants to teach people how to play games better.",
+                        ans: "False",
+                        exp: "False: 1-paragrafda o'yin o'ynashni emas, balki 'computer games software engineering' (kompyuter o'yinlari dasturiy muhandisligi) bo'yicha magistratura kursi ochilayotgani aytilgan."
+                    },
+                    {
+                        globalNum: 15,
+                        type: "tf",
+                        choices: ["True", "False"],
+                        q: "15 (2). There's a chance that the area might become very important for the computer game industry if this course goes ahead.",
+                        ans: "True",
+                        exp: "True: 2-paragrafda: 'it could put the city at the centre of a multi-million pound industry' (shaharni ko'p million funtlik sanoat markaziga aylantirishi mumkin) deyilgan."
+                    },
+                    {
+                        globalNum: 16,
+                        type: "tf",
+                        choices: ["True", "False"],
+                        q: "16 (3). The leader of the course hopes to expand people's understanding of what computer games are about.",
+                        ans: "True",
+                        exp: "True: 4-paragrafda kurs rahbari Jon Sazerlend odamlar kompyuter o'yinlari faqat mashinalar emas, balki insonlar haqida ham ekanini tushunishlariga umid qilishini aytgan."
+                    },
+                    {
+                        globalNum: 17,
+                        type: "tf",
+                        choices: ["True", "False"],
+                        q: "17 (4). There is more money now in computer games than in the entire cinema industry.",
+                        ans: "False",
+                        exp: "False: 6-paragrafda hozir (now) emas, balki 'In the next five years' (kelgusi besh yil ichida) kino sanoatidan o'zib ketishi aytilgan."
+                    },
+                    {
+                        globalNum: 18,
+                        type: "tf",
+                        choices: ["True", "False"],
+                        q: "18 (5). Only older, more advanced students can currently take the course.",
+                        ans: "True",
+                        exp: "True: 1- va 7-paragraflarga ko'ra, hozircha faqat magistratura ('masters degree') kursi mavjud, bakalavr ('Bachelors course') esa yaqin kelajakda ochiladi."
+                    },
+                    {
+                        globalNum: 19,
+                        type: "tf",
+                        choices: ["True", "False"],
+                        q: "19 (6). The university is undergoing expansion to allow the course to take place.",
+                        ans: "True",
+                        exp: "True: 7-paragrafda universitet 'are in the process of building a new computer laboratory' (yangi kompyuter laboratoriyasini qurish jarayonida) ekani yozilgan."
+                    },
+                    {
+                        globalNum: 20,
+                        type: "tf",
+                        choices: ["True", "False"],
+                        q: "20 (7). The course is specially designed for professionals such as doctors and pilots.",
+                        ans: "False",
+                        exp: "False: 8- va 9-paragraflarda kurs shifokor va uchuvchilar uchun maxsus tuzilgani emas, balki o'yin texnologiyalarining tibbiyot va aviatsiya simulyatorlarida ham qo'llanilishi aytilgan."
+                    }
+                ]
+            }
+        ];
+
+        let currentPartIdx = 0;
+        let userAnswers = new Array(20).fill(null);
+        let isChecked = false;
+        let studentName = "";
+
+        // 35 daqiqalik taymer
+        let timeLeft = 35 * 60;
+        let timerInterval = null;
+
+        document.getElementById("student-name-input").addEventListener("keydown", function(e) {
+            if (e.key === "Enter") {
+                e.preventDefault();
+                enterPlatform();
+            }
+        });
+
+        function enterPlatform() {
+            const val = document.getElementById("student-name-input").value.trim();
+            studentName = val !== "" ? val : "O'quvchi";
+            document.getElementById("student-name-display").textContent = studentName;
+            document.getElementById("login-overlay").style.display = "none";
+
+            try {
+                if (document.documentElement.requestFullscreen) {
+                    document.documentElement.requestFullscreen().catch(function(){});
+                }
+            } catch (e) {}
+
+            initSideNavGrids();
+            loadPart(0);
+            startTimer();
+        }
+
+        function startTimer() {
+            if (timerInterval) clearInterval(timerInterval);
+            timerInterval = setInterval(() => {
+                if (timeLeft > 0) {
+                    timeLeft--;
+                    const m = Math.floor(timeLeft / 60).toString().padStart(2, "0");
+                    const s = (timeLeft % 60).toString().padStart(2, "0");
+                    document.getElementById("timer-display").textContent = `${m}:${s}`;
+                } else {
+                    clearInterval(timerInterval);
+                }
+            }, 1000);
+        }
+
+        function initSideNavGrids() {
+            for (let p = 0; p < 3; p++) {
+                const grid = document.getElementById(`nav-grid-p${p}`);
+                grid.innerHTML = "";
+                advancedReadingParts[p].questions.forEach((qObj) => {
+                    const btn = document.createElement("button");
+                    btn.type = "button";
+                    btn.className = "nav-q-btn";
+                    btn.id = `nav-btn-${qObj.globalNum}`;
+                    btn.textContent = qObj.globalNum;
+                    btn.onclick = () => {
+                        if (currentPartIdx !== p) loadPart(p);
+                        setTimeout(() => {
+                            const card = document.getElementById(`q-card-${qObj.globalNum}`);
+                            if (card) card.scrollIntoView({ behavior: "smooth", block: "center" });
+                        }, 50);
+                    };
+                    grid.appendChild(btn);
+                });
+            }
+        }
+
+        function loadPart(pIdx) {
+            currentPartIdx = pIdx;
+            const partObj = advancedReadingParts[pIdx];
+
+            document.documentElement.style.setProperty("--active-color", partObj.color);
+            document.getElementById("brand-logo").textContent = partObj.badgeLabel;
+
+            for (let i = 0; i < 3; i++) {
+                document.getElementById(`tab-p${i}`).classList.toggle("active", i === pIdx);
+            }
+
+            document.getElementById("prev-part-btn").disabled = pIdx === 0;
+            document.getElementById("next-part-btn").disabled = pIdx === 2;
+
+            document.getElementById("passage-part-indicator").textContent = partObj.headerLabel;
+            document.getElementById("passage-title").textContent = partObj.title;
+            document.getElementById("passage-body").innerHTML = partObj.paragraphs.map(p => `<p>${p}</p>`).join("");
+
+            if (pIdx === 0) {
+                syncPart1InlineGaps();
+            }
+
+            renderQuestionsForCurrentPart();
+        }
+
+        function changePart(dir) {
+            const next = currentPartIdx + dir;
+            if (next >= 0 && next < 3) loadPart(next);
+        }
+
+        function syncPart1InlineGaps() {
+            for (let i = 1; i <= 6; i++) {
+                const el = document.getElementById(`inline-gap-${i}`);
+                const val = userAnswers[i - 1];
+                if (el) {
+                    if (val) {
+                        el.textContent = `(${i}) ${val}`;
+                        el.classList.add("filled");
+                    } else {
+                        el.textContent = `(${i}) ________`;
+                        el.classList.remove("filled");
+                    }
+                }
+            }
+        }
+
+        function renderQuestionsForCurrentPart() {
+            const partObj = advancedReadingParts[currentPartIdx];
+            const qPane = document.getElementById("questions-pane");
+
+            let html = `
+                <div class="instruction-box">
+                    <strong>${partObj.instruction}</strong>
+                </div>
+            `;
+
+            if (partObj.sentenceBank) {
+                html += `
+                    <div class="sentences-bank-box">
+                        ${partObj.sentenceBank.map(s => `<div style="margin-bottom:6px;">${s}</div>`).join("")}
+                    </div>
+                `;
+            }
+
+            partObj.questions.forEach((qObj) => {
+                const gIdx = qObj.globalNum - 1;
+                const chosen = userAnswers[gIdx];
+
+                html += `
+                    <div class="q-card" id="q-card-${qObj.globalNum}">
+                        <div class="q-prompt">${qObj.q}</div>
+                        <div class="pills-row">
+                            ${qObj.choices.map((ch) => {
+                                let cls = "choice-pill";
+                                if (chosen === ch) cls += " selected";
+                                if (isChecked) {
+                                    if (ch === qObj.ans) cls += " correct-pill";
+                                    else if (chosen === ch && chosen !== qObj.ans) cls += " wrong-pill";
+                                }
+                                return `<button type="button" class="${cls}" onclick="selectChoice(${qObj.globalNum}, '${ch}')">${ch}</button>`;
+                            }).join("")}
+                        </div>
+                        <div class="exp-box ${isChecked && chosen !== qObj.ans ? 'wrong-exp' : ''}" style="display: ${isChecked ? 'block' : 'none'};">
+                            ${isChecked ? `<strong>${chosen === qObj.ans ? '✓ To\'g\'ri!' : '✗ Xato!'}</strong> To'g'ri javob: <b>${qObj.ans}</b><br><em>Izoh: ${qObj.exp}</em>` : ''}
+                        </div>
+                    </div>
+                `;
+            });
+
+            qPane.innerHTML = html;
+        }
+
+        function selectChoice(globalNum, val) {
+            if (isChecked) return;
+            userAnswers[globalNum - 1] = val;
+
+            const navBtn = document.getElementById(`nav-btn-${globalNum}`);
+            if (navBtn) navBtn.classList.add("answered");
+
+            const count = userAnswers.filter(a => a !== null).length;
+            document.getElementById("answered-counter").textContent = `Belgilandi: ${count} / 20`;
+
+            if (currentPartIdx === 0) {
+                syncPart1InlineGaps();
+            }
+
+            renderQuestionsForCurrentPart();
+        }
+
+        function highlightSelection() {
+            const sel = window.getSelection();
+            if (!sel.rangeCount || sel.isCollapsed) return;
+            const range = sel.getRangeAt(0);
+            const span = document.createElement("span");
+            span.className = "hl-mark";
+            try { range.surroundContents(span); } catch (e) {}
+            sel.removeAllRanges();
+        }
+
+        function finishAndCheckAll() {
+            const unanswered = userAnswers.filter(a => a === null).length;
+            if (unanswered > 0 && !isChecked) {
+                if (!confirm(`Sizda hali ${unanswered} ta belgilanmagan savol bor. Baribir testni yakunlaysizmi?`)) return;
+            }
+
+            isChecked = true;
+            if (timerInterval) clearInterval(timerInterval);
+
+            let total = 0;
+            let pScores = [0, 0, 0];
+
+            advancedReadingParts.forEach((part, pIdx) => {
+                part.questions.forEach((qObj) => {
+                    const isOk = userAnswers[qObj.globalNum - 1] === qObj.ans;
+                    if (isOk) {
+                        total++;
+                        pScores[pIdx]++;
+                    }
+                    const navBtn = document.getElementById(`nav-btn-${qObj.globalNum}`);
+                    if (navBtn) {
+                        navBtn.className = "nav-q-btn " + (isOk ? "correct-btn" : "wrong-btn");
+                    }
+                });
+            });
+
+            const sBox = document.getElementById("score-box");
+            sBox.style.display = "block";
+            sBox.innerHTML = `
+                🎯 <strong>Umumiy Natija: ${total} / 20 (${Math.round((total / 20) * 100)}%)</strong><br>
+                Part 1: ${pScores[0]}/6 | Part 2: ${pScores[1]}/7 | Part 3: ${pScores[2]}/7
+            `;
+
+            renderQuestionsForCurrentPart();
+        }
+
+        function resetAllTest() {
+            userAnswers = new Array(20).fill(null);
+            isChecked = false;
+            timeLeft = 35 * 60;
+            document.getElementById("answered-counter").textContent = "Belgilandi: 0 / 20";
+            document.getElementById("score-box").style.display = "none";
+            initSideNavGrids();
+            loadPart(0);
+            startTimer();
+        }
+    </script>
+</body>
+</html>
